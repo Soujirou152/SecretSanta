@@ -64,6 +64,7 @@ public class GenericStack2<E> {
 		for(int i = 0; i < 101; i++){
 			stack.push(String.valueOf(i));
 		}
+		// All commented code below here was when I was testing by hand
 //		stack.push("what");
 //		stack.push("Is");
 //		stack.push("This");
