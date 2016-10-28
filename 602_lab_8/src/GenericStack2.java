@@ -4,6 +4,7 @@ public class GenericStack2<E> {
 	private java.util.ArrayList<E> list = new java.util.ArrayList<>();
 	private E[] array;
 	private int sizeIndex = 0;
+	private int sizeCounter = 1;
 
 	public GenericStack2() {
 		array = (E[]) new Object[10];
@@ -21,13 +22,14 @@ public class GenericStack2<E> {
 	}
 
 	public void push(E element) {
-		if (getSize() >= 10 && getSize() % 10 == 0) {
+		if (getSize() == array.length) {
 			E[] temp = (E[]) new Object[getSize() * 2];
 			for (int index = 0; index < getSize(); index++) {
 				temp[index] = array[index];
 			}
 			array = temp;
 			array[sizeIndex++] = element;
+			sizeCounter++;
 
 		} else {
 			array[sizeIndex++] = element;
@@ -53,53 +55,52 @@ public class GenericStack2<E> {
 		// return "stack: " + Arrays.toString(array);
 		String result = "";
 		for (int index = sizeIndex; index > 0; index--) {
-			result = result + array[index-1].toString() + "\n";
+			result = result + array[index - 1].toString() + "\n";
 		}
 		return result;
 	}
 
 	public static void main(String[] args) {
 		GenericStack2<String> stack = new GenericStack2<>();
-		
-		for(int i = 0; i < 101; i++){
+
+		for (int i = 0; i < 161; i++) {
 			stack.push(String.valueOf(i));
 		}
 		// All commented code below here was when I was testing by hand
-//		stack.push("what");
-//		stack.push("Is");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		StdOut.printf("Size is %d. \n", stack.getSize());
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		stack.push("This");
-//		StdOut.printf("Size is %d. \n", stack.getSize());
-//		stack.push("This");
-//
-//		StdOut.printf("Size is %d. \n", stack.getSize());
-//		StdOut.printf("Elements are: %s\n", stack.toString());
+		// stack.push("what");
+		// stack.push("Is");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// StdOut.printf("Size is %d. \n", stack.getSize());
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// stack.push("This");
+		// StdOut.printf("Size is %d. \n", stack.getSize());
+		// stack.push("This");
+		//
+		// StdOut.printf("Size is %d. \n", stack.getSize());
+		StdOut.printf("Elements are: %s\n", stack.toString());
 		// StdOut.printf("Popping stack is: %s\n", stack.pop());
-		
+
 		StdOut.printf("Size is %d. \n", stack.getSize());
 		StdOut.println("We are popping!!");
-		
 
-		 while (!stack.isEmpty()) {
-		 StdOut.printf("%s\n", stack.pop().toString());
-		 }
+		while (!stack.isEmpty()) {
+			StdOut.printf("%s\n", stack.pop().toString());
+		}
 
 	}
 
